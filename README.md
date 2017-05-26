@@ -14,7 +14,7 @@ You need yarn, it's a better version of npm, works the same, faster and easier, 
 `yarn install` to install all the dependencies.
 
 
-`yarn start` to start dev server with hot reload.
+`yarn start` to start dev server with hot reload, it's live on `localhost:3000`.
 
 
 `yarn build` to build prod bundle, it includes both treeshaking and uglify to optimize the code as much as possible.
