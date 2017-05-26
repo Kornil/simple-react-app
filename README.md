@@ -9,7 +9,7 @@ nb: this is just front end, you can use whatever backend language you are most c
 
 ## How to install
 You need yarn, it's a better version of npm, works the same, faster and easier, all the big guys are using it.
-(Just follow the guide to install yarn on your machine)[https://yarnpkg.com/lang/en/docs/install/]
+[Just follow the guide to install yarn on your machine](https://yarnpkg.com/lang/en/docs/install/)
 
 
 `yarn install` to install all the dependencies.
