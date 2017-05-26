@@ -9,6 +9,12 @@ nb: this is just front end, you can use whatever backend language you are most c
 
 ## How to install
 You need yarn, it's a better version of npm, works the same, faster and easier, all the big guys are using it.
+
+
 `yarn install` to install all the dependencies.
+
+
 `yarn start` to start dev server with hot reload.
+
+
 `yarn build` to build prod bundle, it includes both treeshaking and uglify to optimize the code as much as possible.
