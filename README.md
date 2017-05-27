@@ -19,3 +19,7 @@ You need yarn, it's a better version of npm, works the same, faster and easier, 
 
 
 `yarn build` to build prod bundle, it includes both treeshaking and uglify to optimize the code as much as possible.
+
+## Eslint
+
+This project uses AirBnB Javascript specs so you can write error-free react and javasctipt code, if you use Visual Studio Code, you can install eslint from the extension tab to activate this function, other editors just google _name of the editor + eslint_ you will find how to enable it for your editor.
