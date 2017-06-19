@@ -1,8 +1,9 @@
 import React from 'react';
 import {
-  BrowserRouter,
+  HashRouter,
   Route,
   Link,
+  Switch,
 } from 'react-router-dom';
 
 import Home from './containers/Home';
@@ -20,7 +21,7 @@ class App extends React.Component {
    */
   render() {
     return (
-      <BrowserRouter>
+      <HashRouter>
         <main>
           <div className="container">
             <h1>hello world!</h1>
@@ -31,11 +32,12 @@ class App extends React.Component {
             <li><Link to="/">Home</Link></li>
             <li><Link to="/about">About</Link></li>
           </ul>
-
-          <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/about" component={About} />
+          </Switch>
         </main>
-      </BrowserRouter>
+      </HashRouter>
     );
   }
 }
