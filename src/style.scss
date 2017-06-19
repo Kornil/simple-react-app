@@ -1,0 +1,9 @@
+.container {
+    margin: auto;
+    text-align: center;
+
+    &__image {
+        width: 100px;
+        height: auto;
+    }
+}
