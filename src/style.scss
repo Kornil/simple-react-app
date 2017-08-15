@@ -1,9 +1,14 @@
 .container {
     margin: auto;
     text-align: center;
+    max-width: 600px;
 
     &__image {
         width: 100px;
         height: auto;
     }
+}
+
+.left {
+    text-align: left;
 }

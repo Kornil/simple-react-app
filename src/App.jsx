@@ -23,13 +23,13 @@ class App extends React.Component {
   render() {
     return (
       <HashRouter>
-        <main>
-          <div className="container">
+        <main className="container">
+          <div>
             <h1>hello world!</h1>
             <img className="container__image" alt="react logo" src={reactLogo} />
             <p>If you see this everything is working!</p>
           </div>
-          <ul>
+          <ul className="left">
             <li><Link to="/">Home</Link></li>
             <li><Link to="/about">About</Link></li>
           </ul>
