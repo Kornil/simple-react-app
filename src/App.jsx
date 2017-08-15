@@ -12,7 +12,8 @@ import About from './containers/About';
 import reactLogo from './assets/React-icon.png';
 
 /**
- * this container is defined as class so we can modify state
+ * this container is defined as class so you can modify state
+ * when you add more stuff to it
  */
 class App extends React.Component {
   /**
