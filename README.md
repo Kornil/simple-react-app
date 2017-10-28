@@ -3,22 +3,40 @@ Simple base app with react, react-router v4, hot-reload &amp; sass.
 
 ## What is this
 This is a base project that you can use to jumpstart your react apps.
-It includes the last react spec as of today 22/05/2017, and uses react-router v4 to handle routes.
-Style is handles by sass/scss.
-nb: this is just front end, you can use whatever backend language you are most confortable with.
+It includes the last react spec as of today 28/10/2017, and uses react-router v4 to handle routes.
+Style is handled by sass/scss.
+NB: this is just front end, you can use whatever backend language you are most comfortable with.
 
 ## How to install
-You need yarn, it's a better version of npm, works the same, faster and easier, all the big guys are using it.
-[Just follow the guide to install yarn on your machine](https://yarnpkg.com/lang/en/docs/install/)
+You can use both npm or yarn, the version I used to create this project are:
+
+```
+$ node -v ; npm -v ; yarn -v
+v8.8.1
+5.4.2
+1.2.1
+```
+If you just freshly installed yarn/npm you are good to go, else you might need to upgrade, for npm I use `n`
+
+```
+npm install -g n
+```
+to install it and after that select at least the stable version (what I used).
+
+```
+n stable
+```
+
+and now you have the latest stable version of node&npm.
 
 
-`yarn install` to install all the dependencies.
+`yarn install`/`npm install` to install all the dependencies.
 
 
-`yarn start` to start dev server with hot reload, it's live on `localhost:3000`.
+`yarn start`/`npm start` to start dev server with hot reload, it's live on `localhost:3000`.
 
 
-`yarn build` to build prod bundle, it includes both treeshaking and uglify to optimize the code as much as possible.
+`yarn run build`/`npm run build` to build prod bundle, it includes both treeshaking and uglify to optimize the code as much as possible.
 
 ## Eslint
 
