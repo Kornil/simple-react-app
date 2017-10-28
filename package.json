@@ -5,6 +5,10 @@
   "main": "index.js",
   "author": "Francesco Agnoletto",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Kornil/simple-react-app.git"
+  },
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server",
     "build": "NODE_ENV=production webpack -p"
@@ -34,8 +38,8 @@
   },
   "dependencies": {
     "prop-types": "^15.5.10",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
     "react-router-dom": "^4.1.2"
   }
 }
