@@ -13,6 +13,10 @@
     "start": "NODE_ENV=development webpack-dev-server",
     "build": "NODE_ENV=production webpack -p"
   },
+  "bin": {
+    "simple-react-app": "./bin/sra.js"
+  },
+  "preferGlobal": true,
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-eslint": "^7.2.3",
