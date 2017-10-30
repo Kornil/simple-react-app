@@ -1,6 +1,6 @@
 {
   "name": "simple-react-app",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "react, react-router, hot-reload, sass.",
   "main": "index.js",
   "author": "Francesco Agnoletto",
