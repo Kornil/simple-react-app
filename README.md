@@ -45,6 +45,27 @@ and now you have the latest stable version of node&npm.
 
 `yarn run build`/`npm run build` to build prod bundle, it includes both treeshaking and uglify to optimize the code as much as possible.
 
+
+## Project structure
+
+The boilerplate structure and files are the same as this repo minus the *bin* folder, everything else is exactly the same.
+
+*root*
+|
+├── */src/*
+│   ├── */assets/* where images and stuff are stored
+│   ├── */containers/* react-router jsx pages
+│   ├── *App.jsx* main layout, deals with routes
+│   ├── *index.html* entry point
+│   ├── *index.jsx* javascript entry point
+│   └── *style.scss* styling
+├── *package.json* the whole package.json with every dependency and script, nothing is kept hidden
+├── *.eslintrc* eslint config
+├── *.babelrc* babel config (polyfills)
+├── *webpack.config.js* webpack config, it has a dev and prod environment
+└── *README.md* this file
+
+
 ## Eslint
 
 This project uses AirBnB Javascript specs so you can write error-free react and javasctipt code, if you use Visual Studio Code, you can install eslint from the extension tab to activate this function, other editors just google _name of the editor + eslint_ you will find how to enable it for your editor.
