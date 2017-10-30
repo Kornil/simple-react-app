@@ -10,6 +10,21 @@ const scripts =
   `"start": "NODE_ENV=development webpack-dev-server",
   "build": "NODE_ENV=production webpack -p"`;
 
+const gitignoreData =
+`# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependency directories
+node_modules
+
+# Optional npm cache directory
+.npm
+
+# Prod Bundle
+build`;
+
 const getDeps = deps => Object.entries(deps).map(dep =>
   `${dep[0]}@${dep[1]}`)
     .toString()
@@ -24,10 +39,12 @@ exec(`mkdir ${process.argv[2]} ; cd ${process.argv[2]} ; npm init -f`, (initErr,
     return;
   }
   const packageJSON = `${process.argv[2]}/package.json`;
+  const gitIgnore = `${process.argv[2]}/.gitignore`;
   fs.readFile(packageJSON, (err, file) => {
     if (err) throw err;
     const data = file.toString().replace('"test": "echo \\"Error: no test specified\\" && exit 1"', scripts);
     fs.writeFile(packageJSON, data, err2 => err2 || true);
+    fs.writeFile(gitIgnore, gitignoreData, err3 => err3 || true);
   });
   // console.log(`stdout: ${stdout}`);
   // console.log(`stderr: ${stderr}`);
@@ -49,7 +66,7 @@ exec(`mkdir ${process.argv[2]} ; cd ${process.argv[2]} ; npm init -f`, (initErr,
     console.log('Copying additional files..');
     exec(`cd ${process.argv[2]} ; 
     cp -r ${path.join(__dirname, '../src')} . ; 
-    cp ${path.join(__dirname, '../')}{README.md,webpack.config.js,.gitignore,.eslintrc,.babelrc} .`, (cpErr, cpStdout, cpStderr) => {
+    cp ${path.join(__dirname, '../')}{README.md,webpack.config.js,.eslintrc,.babelrc} .`, (cpErr, cpStdout, cpStderr) => {
       if (cpErr) {
         console.error(`Apparently we can't copy a bunch of files:
         ${cpErr}`);
