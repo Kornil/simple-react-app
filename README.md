@@ -50,6 +50,7 @@ and now you have the latest stable version of node&npm.
 
 The boilerplate structure and files are the same as this repo minus the *bin* folder, everything else is exactly the same.
 
+```
 *root*
 |
 ├── */src/*
@@ -64,6 +65,7 @@ The boilerplate structure and files are the same as this repo minus the *bin* fo
 ├── *.babelrc* babel config (polyfills)
 ├── *webpack.config.js* webpack config, it has a dev and prod environment
 └── *README.md* this file
+```
 
 
 ## Eslint
