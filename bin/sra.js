@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
+const fs = require('fs-extra');
 const path = require('path');
 const { exec } = require('child_process');
 
@@ -21,7 +21,9 @@ const getDeps = deps => Object.entries(deps).map(dep =>
   `${dep[0]}@${dep[1]}`)
     .toString()
     .replace(/,/g, ' ')
-    .replace(/^/g, '');
+    .replace(/^/g, '')
+    // exclude the plugin only used in this file, nor relevant to the boilerplate
+    .replace(/fs-extra[^\s]+/g, '');
 
 console.log('Initializing project..');
 exec(`mkdir ${process.argv[2]} ; cd ${process.argv[2]} ; npm init -f`, (initErr, initStdout, initStderr) => {
@@ -62,17 +64,8 @@ exec(`mkdir ${process.argv[2]} ; cd ${process.argv[2]} ; npm init -f`, (initErr,
     console.log('Dependencies installed');
 
     console.log('Copying additional files..');
-    exec(`cd ${process.argv[2]} ; 
-    cp -r ${path.join(__dirname, '../src')} . ; 
-    cp ${path.join(__dirname, '../')}{README.md,webpack.config.js,.eslintrc,.babelrc} .`, (cpErr, cpStdout, cpStderr) => {
-      if (cpErr) {
-        console.error(`Apparently we can't copy a bunch of files:
-        ${cpErr}`);
-        return;
-      }
-      console.log(cpStdout);
-      console.log(cpStderr);
-      console.log(`All done!\nYour project is now started into ${process.argv[2]} folder, refer to the README for the project structure.\nHappy Coding!`);
-    });
+    fs.copy(path.join(__dirname, '../src'), `${process.argv[2]}/src`)
+      .then(() => console.log(`All done!\nYour project is now started into ${process.argv[2]} folder, refer to the README for the project structure.\nHappy Coding!`))
+      .catch(err => console.error(err));
   });
 });
