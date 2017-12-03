@@ -10,21 +10,13 @@ const scripts =
   `"start": "NODE_ENV=development webpack-dev-server",
   "build": "NODE_ENV=production webpack -p"`;
 
-const gitignoreData =
-`# Logs
-logs
-*.log
-npm-debug.log*
-
-# Dependency directories
-node_modules
-
-# Optional npm cache directory
-.npm
-
-# Prod Bundle
-build`;
-
+/**
+ * we pass the object key dependency || devdependency to this function
+ * @param {object} deps object key that we want to extract
+ * @returns {string} a string of 'dependencies@version'
+ * that we can attach to an `npm i {value}` to install
+ * every dep the exact version speficied in package.json
+ */
 const getDeps = deps => Object.entries(deps).map(dep =>
   `${dep[0]}@${dep[1]}`)
     .toString()
@@ -39,13 +31,19 @@ exec(`mkdir ${process.argv[2]} ; cd ${process.argv[2]} ; npm init -f`, (initErr,
     return;
   }
   const packageJSON = `${process.argv[2]}/package.json`;
-  const gitIgnore = `${process.argv[2]}/.gitignore`;
   fs.readFile(packageJSON, (err, file) => {
     if (err) throw err;
     const data = file.toString().replace('"test": "echo \\"Error: no test specified\\" && exit 1"', scripts);
     fs.writeFile(packageJSON, data, err2 => err2 || true);
-    fs.writeFile(gitIgnore, gitignoreData, err3 => err3 || true);
   });
+
+  const filesToCopy = ['README.md', '.gitignore', 'webpack.config.js', '.eslintrc', '.babelrc'];
+
+  for (let i = 0; i < filesToCopy.length; i += 1) {
+    fs.createReadStream(path.join(__dirname, `../${filesToCopy[i]}`))
+    .pipe(fs.createWriteStream(`${process.argv[2]}/${filesToCopy[i]}`));
+  }
+
   // console.log(`stdout: ${stdout}`);
   // console.log(`stderr: ${stderr}`);
   console.log('npm init -- done\n');
