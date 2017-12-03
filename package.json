@@ -10,8 +10,8 @@
     "url": "git://github.com/Kornil/simple-react-app.git"
   },
   "scripts": {
-    "start": "NODE_ENV=development webpack-dev-server",
-    "build": "NODE_ENV=production webpack -p"
+    "start": "cross-env NODE_ENV=development webpack-dev-server",
+    "build": "cross-env NODE_ENV=production webpack -p"
   },
   "bin": {
     "simple-react-app": "./bin/sra.js"
@@ -24,6 +24,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "cross-env": "^5.1.1",
     "css-loader": "^0.28.7",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.1.0",
@@ -41,6 +42,7 @@
     "webpack-dev-server": "^2.9.3"
   },
   "dependencies": {
+    "fs-extra": "^4.0.2",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
