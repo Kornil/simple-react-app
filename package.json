@@ -41,6 +41,7 @@
     "webpack-dev-server": "^2.9.3"
   },
   "dependencies": {
+    "fs-extra": "^4.0.2",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
