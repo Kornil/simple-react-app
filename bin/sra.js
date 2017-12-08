@@ -26,7 +26,7 @@ const getDeps = deps => Object.entries(deps).map(dep =>
     .replace(/fs-extra[^\s]+/g, '');
 
 console.log('Initializing project..');
-exec(`mkdir ${process.argv[2]} ; cd ${process.argv[2]} ; npm init -f`, (initErr, initStdout, initStderr) => {
+exec(`mkdir ${process.argv[2]} && cd ${process.argv[2]} && npm init -f`, (initErr, initStdout, initStderr) => {
   if (initErr) {
     console.error(`Everything was fine, then it wasn't:
     ${initErr}`);
@@ -53,7 +53,7 @@ exec(`mkdir ${process.argv[2]} ; cd ${process.argv[2]} ; npm init -f`, (initErr,
   console.log('Installing deps -- it might take a few minutes..');
   const devDeps = getDeps(packageJson.devDependencies);
   const deps = getDeps(packageJson.dependencies);
-  exec(`cd ${process.argv[2]} ; npm i -D ${devDeps} ; npm i -S ${deps}`,
+  exec(`cd ${process.argv[2]} && npm i -D ${devDeps} && npm i -S ${deps}`,
   (npmErr, npmStdout, npmStderr) => {
     if (npmErr) {
       console.error(`it's always npm, ain't it?
