@@ -7,8 +7,8 @@ const { exec } = require('child_process');
 const packageJson = require('../package.json');
 
 const scripts =
-  `"start": "NODE_ENV=development webpack-dev-server",
-  "build": "NODE_ENV=production webpack -p"`;
+  `"start": "cross-env NODE_ENV=development webpack-dev-server",
+  "build": "cross-env NODE_ENV=production webpack -p"`;
 
 /**
  * we pass the object key dependency || devdependency to this function
