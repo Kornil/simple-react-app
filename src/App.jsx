@@ -11,8 +11,7 @@ import About from './containers/About';
 
 import reactLogo from './assets/React-icon.png';
 
-const App = () => {
-  return (
+const App = () => (
     <HashRouter>
       <main className="container">
         <div>
@@ -30,7 +29,6 @@ const App = () => {
         </Switch>
       </main>
     </HashRouter>
-  );
-}
+);
 
 export default App;
