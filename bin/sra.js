@@ -2,6 +2,7 @@
 
 const fs = require('fs-extra');
 const path = require('path');
+const https = require('https');
 const { exec } = require('child_process');
 
 const packageJson = require('../package.json');
@@ -39,12 +40,25 @@ exec(`mkdir ${process.argv[2]} && cd ${process.argv[2]} && npm init -f`, (initEr
     fs.writeFile(packageJSON, data, err2 => err2 || true);
   });
 
-  const filesToCopy = ['README.md', '.gitignore', 'webpack.config.js', '.eslintrc', '.babelrc'];
+  const filesToCopy = ['README.md', 'webpack.config.js', '.eslintrc', '.babelrc'];
 
   for (let i = 0; i < filesToCopy.length; i += 1) {
     fs.createReadStream(path.join(__dirname, `../${filesToCopy[i]}`))
     .pipe(fs.createWriteStream(`${process.argv[2]}/${filesToCopy[i]}`));
   }
+
+  https.get('https://raw.githubusercontent.com/Kornil/simple-react-app/master/.gitignore', (res) => {
+    res.setEncoding('utf8');
+    let body = '';
+    res.on('data', (data) => {
+      body += data;
+    });
+    res.on('end', () => {
+      fs.writeFile(`${process.argv[2]}/.gitignore`, body, { encoding: 'utf-8' }, (err) => {
+        if (err) throw err;
+      });
+    });
+  });
 
   // console.log(`stdout: ${stdout}`);
   // console.log(`stderr: ${stderr}`);
