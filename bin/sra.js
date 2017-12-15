@@ -27,6 +27,8 @@ const getDeps = deps => Object.entries(deps).map(dep =>
     .replace(/fs-extra[^\s]+/g, '');
 
 console.log('Initializing project..');
+
+// create folder and initialize npm
 exec(`mkdir ${process.argv[2]} && cd ${process.argv[2]} && npm init -f`, (initErr, initStdout, initStderr) => {
   if (initErr) {
     console.error(`Everything was fine, then it wasn't:
@@ -34,6 +36,7 @@ exec(`mkdir ${process.argv[2]} && cd ${process.argv[2]} && npm init -f`, (initEr
     return;
   }
   const packageJSON = `${process.argv[2]}/package.json`;
+  // replace the default scripts, with the webpack scripts in package.json
   fs.readFile(packageJSON, (err, file) => {
     if (err) throw err;
     const data = file.toString().replace('"test": "echo \\"Error: no test specified\\" && exit 1"', scripts);
@@ -60,10 +63,10 @@ exec(`mkdir ${process.argv[2]} && cd ${process.argv[2]} && npm init -f`, (initEr
     });
   });
 
-  // console.log(`stdout: ${stdout}`);
-  // console.log(`stderr: ${stderr}`);
+
   console.log('npm init -- done\n');
 
+  // installing dependencies
   console.log('Installing deps -- it might take a few minutes..');
   const devDeps = getDeps(packageJson.devDependencies);
   const deps = getDeps(packageJson.dependencies);
@@ -78,6 +81,7 @@ exec(`mkdir ${process.argv[2]} && cd ${process.argv[2]} && npm init -f`, (initEr
     console.log('Dependencies installed');
 
     console.log('Copying additional files..');
+    // copy additional source files
     fs.copy(path.join(__dirname, '../src'), `${process.argv[2]}/src`)
       .then(() => console.log(`All done!\nYour project is now started into ${process.argv[2]} folder, refer to the README for the project structure.\nHappy Coding!`))
       .catch(err => console.error(err));
