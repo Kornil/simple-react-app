@@ -50,6 +50,8 @@ exec(`mkdir ${process.argv[2]} && cd ${process.argv[2]} && npm init -f`, (initEr
     .pipe(fs.createWriteStream(`${process.argv[2]}/${filesToCopy[i]}`));
   }
 
+  // npm will remove the .gitignore file when the package is installed, therefore it cannot be copied 
+  // locally and needs to be downloaded. See https://github.com/Kornil/simple-react-app/issues/12
   https.get('https://raw.githubusercontent.com/Kornil/simple-react-app/master/.gitignore', (res) => {
     res.setEncoding('utf8');
     let body = '';
