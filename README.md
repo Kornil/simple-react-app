@@ -7,8 +7,8 @@ Simple base app with react, react-router v4, hot-reload &amp; sass.
 
 ## What is this
 This is a base project that you can use to jumpstart your react apps, it works similarly to create-react-app, just install the package globally and use it to create as many projects as you want (check How to install for detailed instructions).
-It includes the last react spec as of today 28/10/2017, and uses react-router v4 to handle routes.
-Style is handled by sass/scss.
+It includes the last react spec as of today 01/03/2018, and uses react-router v4 to handle routes.
+Style is handled by sass/scss, Bundle is generated with webpack 4.
 NB: this is just front end, you can use whatever backend language you are most comfortable with.
 
 ## How to install
