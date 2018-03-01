@@ -14,17 +14,6 @@ const DefinePluginConfig = new webpack.DefinePlugin({
   'process.env.NODE_ENV': JSON.stringify('production'),
 });
 
-const UglifyJsPluginConfig = new webpack.optimize.UglifyJsPlugin({
-  beautify: false,
-  mangle: {
-    screw_ie8: true,
-  },
-  compress: {
-    screw_ie8: true,
-  },
-  comments: false,
-});
-
 module.exports = {
   devServer: {
     host: 'localhost',
@@ -34,12 +23,9 @@ module.exports = {
       'Access-Control-Allow-Origin': '*',
     },
   },
-  entry: [
-    'react-hot-loader/patch',
-    path.join(__dirname, '/src/index.jsx'),
-  ],
+  entry: ['react-hot-loader/patch', path.join(__dirname, '/src/index.jsx')],
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
@@ -65,11 +51,15 @@ module.exports = {
     filename: 'index.js',
     path: path.join(__dirname, '/build'),
   },
-  plugins: dev ?
-  [
-    HTMLWebpackPluginConfig,
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin(),
-  ] :
-  [HTMLWebpackPluginConfig, DefinePluginConfig, UglifyJsPluginConfig],
+  mode: dev ? 'development' : 'production',
+  optimization: !dev ? {
+    minimize: true,
+  } : {},
+  plugins: dev
+    ? [
+      HTMLWebpackPluginConfig,
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.NamedModulesPlugin(),
+    ]
+    : [HTMLWebpackPluginConfig, DefinePluginConfig],
 };
