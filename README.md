@@ -1,4 +1,9 @@
 # simple-react-app
+
+[![forthebadge](https://forthebadge.com/images/badges/you-didnt-ask-for-this.svg)](https://forthebadge.com)
+
+But you still get it.
+
 Simple base app with react, react-router v4, hot-reload &amp; sass.
 
 `npm i -g simple-react-app` to install the package.
