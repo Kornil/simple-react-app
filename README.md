@@ -10,6 +10,8 @@ Simple base app with react, react-router v4, hot-reload &amp; sass.
 
 `simple-react-app folderName` to start the boilerplate into `folderName` folder.
 
+Or if you're using `npm@5.2.0` or above, you can simply run `npx simple-react-app folderName`, without the need to install the package globally.
+
 ## What is this
 This is a base project that you can use to jumpstart your react apps, it works similarly to create-react-app, just install the package globally and use it to create as many projects as you want (check How to install for detailed instructions).
 It includes the last react spec as of today 01/03/2018, and uses react-router v4 to handle routes.
