@@ -24,7 +24,7 @@ module.exports = {
     },
     historyApiFallback: true,
   },
-  entry: ['@babel/polyfill', 'react-hot-loader/patch', path.join(__dirname, '/src/index.jsx')],
+  entry: ['@babel/polyfill', 'whatwg-fetch', 'react-hot-loader/patch', path.join(__dirname, '/src/index.jsx')],
   module: {
     rules: [
       {
