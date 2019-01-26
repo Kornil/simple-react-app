@@ -24,7 +24,7 @@ module.exports = {
     },
     historyApiFallback: true,
   },
-  entry: ['react-hot-loader/patch', path.join(__dirname, '/src/index.jsx')],
+  entry: ['@babel/polyfill', 'react-hot-loader/patch', path.join(__dirname, '/src/index.jsx')],
   module: {
     rules: [
       {
@@ -54,9 +54,6 @@ module.exports = {
   },
   mode: dev ? 'development' : 'production',
   plugins: dev
-    ? [
-      HTMLWebpackPluginConfig,
-      new webpack.HotModuleReplacementPlugin(),
-    ]
+    ? [HTMLWebpackPluginConfig, new webpack.HotModuleReplacementPlugin()]
     : [HTMLWebpackPluginConfig, DefinePluginConfig],
 };
